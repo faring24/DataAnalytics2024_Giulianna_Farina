@@ -1,0 +1,72 @@
+---
+title: "Lab 1"
+format: html
+editor: visual
+---
+
+```{r}
+EPI_data <- read.csv("epi2024results06022024.csv")
+```
+
+```{r}
+summary(EPI_data) # stats
+attach(EPI_data)
+```
+Exercise 1
+```{r}
+summary(EPI.new) # stats
+fivenum(EPI.new, na.rm=TRUE)
+stem(EPI.new)
+```
+Exercise 1 Continued & Comparing Distributions
+```{r}
+hist(EPI.new)
+hist(EPI.new, seq(20., 80., 1.0), prob=TRUE)
+lines(density(EPI.new,na.rm=TRUE,bw=1.))
+rug(EPI.new)
+boxplot(EPI.new, APO.new)
+hist(EPI.new, seq(20., 80., 1.0), prob=TRUE)
+lines(density(EPI.new,na.rm=TRUE, bw=1))
+rug(EPI.new)
+hist(EPI.new, seq(20., 80., 1.0), prob=TRUE)
+lines(density(EPI.new,na.rm=TRUE,bw=1))
+rug(EPI.new)
+x<-seq(20,80,1)
+q<- dnorm(x,mean=42, sd=5,log=FALSE)
+lines(x,q)
+lines(x,.4*q)
+ln<- dnorm(x,mean=65, sd=5,log=FALSE)
+lines(x,.12*q)
+```
+Exercise 2
+```{r}
+plot(ecdf(EPI.new), do.points=FALSE, verticals=TRUE)
+qqnorm(EPI.new); qqline(EPI.new)
+qqplot(rnorm(ppoints(250)), EPI.new, xlab = "Q-Q plot for norm dsn")
+qqline(EPI.new)
+qqplot(rt(ppoints(250), df = 5), EPI.new, xlab = "Q-Q plot for t dsn")
+qqline(EPI.new)
+```
+Exercise 2a ECO.old
+```{r}
+plot(ecdf(ECO.old), do.points=FALSE, verticals=TRUE)
+qqnorm(ECO.old); qqline(ECO.old)
+qqplot(rnorm(ppoints(250)), ECO.old, xlab = "Q-Q plot for norm dsn")
+qqline(ECO.old)
+qqplot(rt(ppoints(250), df = 5), ECO.old, xlab = "Q-Q plot for t dsn")
+qqline(ECO.old)
+```
+
+Exercise 2a ECO.new
+```{r}
+plot(ecdf(ECO.new), do.points=FALSE, verticals=TRUE)
+qqnorm(ECO.new); qqline(ECO.new)
+qqplot(rnorm(ppoints(250)), ECO.new, xlab = "Q-Q plot for norm dsn")
+qqline(ECO.new)
+qqplot(rt(ppoints(250), df = 5), ECO.new, xlab = "Q-Q plot for t dsn")
+qqline(ECO.new)
+```
+
+
+
+
